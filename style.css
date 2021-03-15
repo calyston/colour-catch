@@ -77,3 +77,27 @@ path, i, svg {
   display: flex;
   flex-direction: column;
 }
+
+/* Panel */
+
+.panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 20vh;
+}
+
+.panel button {
+  font-size: 1.2rem;
+  margin: 1rem;
+  padding: 1rem;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.panel p {
+  font-size: 1.2rem;
+}
