@@ -30,6 +30,7 @@ path, i, svg {
   align-items: center;
   justify-content: space-evenly;
   position: relative;
+  overflow: hidden;
 }
 
 .colour h2 {
@@ -45,4 +46,34 @@ path, i, svg {
   background-color: gainsboro;
   padding: 1rem;
   width: 80%;
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  /* transform: translateY(100px); */
+  transition: all 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.sliders.active {
+  opacity: 1;
+  transform: translateY(0px);
+  pointer-events: all;
+}
+
+.sliders button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5rem;
+  border: none;
+  border-top-right-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  background: black;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
 }
