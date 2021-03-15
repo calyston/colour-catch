@@ -4,6 +4,7 @@
 ### Live Preview: 
 
 ## Key Features
+- Hex Generator
 
 ## Technologies Used
 HTML, CSS, JavaScript.

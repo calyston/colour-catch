@@ -1,15 +1,33 @@
 //Global Selections and Variables
 
+const colourDivs = document.querySelectorAll('.colour');
+const refreshBtn = document.querySelector('.refresh');
+const sliders = document.querySelectorAll('.input[type="range"]');
+const currentHexes = document.querySelectorAll('.colour h2');
+let initialColours;
 
 //Functions
 
+//Hex Generator
 function generateHex() {
   const letters = '0123456789ABCDEF';
   let hash = '#';
   for (let i = 0; i < 6; i++) {
     hash += letters[Math.floor(Math.random() * 16)];
   }
-  return hash;
+  const hexColour = hash;
+  return hexColour;
 }
-let randomHex = generateHex();
-console.log(randomHex);
+
+function randomColours() {
+  colourDivs.forEach((div, index) => {
+    const hexText = div.children[0];
+    const randomColour = generateHex();
+
+    //Adding the colour to the background
+    div.style.backgroundColor = randomColour;
+    hexText.innerText = randomColour;
+  });
+}
+
+randomColours();
