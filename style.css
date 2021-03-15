@@ -44,13 +44,16 @@ path, i, svg {
   position: absolute;
   bottom: 0%;
   background-color: gainsboro;
+  color: black;
+  text-align: center;
   padding: 1rem;
   width: 80%;
   border-top-right-radius: 1rem;
   border-top-left-radius: 1rem;
-  /* transform: translateY(100px); */
+  transform: translateY(100px);
   transition: all 0.3s ease-in-out;
   pointer-events: none;
+  opacity: 0;
 }
 
 .sliders.active {
@@ -72,10 +75,19 @@ path, i, svg {
   font-weight: bold;
   cursor: pointer;
 }
+/* Controls */
 
 .controls {
   display: flex;
   flex-direction: column;
+}
+
+.adjust, .lock {
+  font-size: 2rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin: 1rem 0rem;
 }
 
 /* Panel */
@@ -100,4 +112,10 @@ path, i, svg {
 
 .panel p {
   font-size: 1.2rem;
+}
+
+.library-panel, .refresh-panel, .save-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
