@@ -30,6 +30,15 @@ function randomColours() {
 
     //Check for contrast
     checkTextContrast(randomColour, hexText);
+
+    //Colourise Sliders
+    const colour = chroma(randomColour);
+    const sliders = div.querySelectorAll('.sliders input');
+    const hue = sliders[0];
+    const brightness = sliders[1];
+    const saturation = sliders[2];
+
+    colouriseSliders(colour, hue, brightness, saturation);
   });
 }
 
@@ -40,6 +49,16 @@ function checkTextContrast(color, text) {
   } else {
     text.style.color = "white";
   }
+}
+
+function colouriseSliders(colour, hue, brightness, saturation) {
+  //Scale Saturation
+  const noSat = colour.set('hsl.s', 0);
+  const fullSat = colour.set('hsl.s', 1);
+  const scaleSat = chroma.scale([noSat, colour, fullSat]);
+
+  //Update Input Colours
+  saturation.style.backgroundImage = `linear-gradient(to right, ${scaleSat(0)}, ${scaleSat(1)})`;
 }
 
 randomColours();

@@ -5,6 +5,7 @@
 
 ## Key Features
 - Hex Generator
+- Contrast checker
 
 ## Technologies Used
 HTML, CSS, JavaScript.

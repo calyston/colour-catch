@@ -38,6 +38,8 @@ path, i, svg {
   cursor: pointer;
 }
 
+/* Sliders */
+
 .sliders {
   display: flex;
   flex-direction: column;
@@ -50,10 +52,10 @@ path, i, svg {
   width: 80%;
   border-top-right-radius: 1rem;
   border-top-left-radius: 1rem;
-  transform: translateY(100px);
+  /* transform: translateY(100px); */
   transition: all 0.3s ease-in-out;
-  pointer-events: none;
-  opacity: 0;
+  /* pointer-events: none; */
+  /* opacity: 0; */
 }
 
 .sliders.active {
@@ -75,6 +77,16 @@ path, i, svg {
   font-weight: bold;
   cursor: pointer;
 }
+
+input[type="range"] {
+  -webkit-appearance: none;
+  margin: 1rem 0rem;
+  width: 100%;
+  position: relative;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
 /* Controls */
 
 .controls {
