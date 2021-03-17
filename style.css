@@ -45,7 +45,7 @@ path, i, svg {
   flex-direction: column;
   position: absolute;
   bottom: 0%;
-  background-color: gainsboro;
+  background-color: white;
   color: black;
   text-align: center;
   padding: 1rem;
