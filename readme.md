@@ -6,6 +6,7 @@
 ## Key Features
 - Hex Generator
 - Contrast checker
+- Sliders to change saturation, hue and brightness
 
 ## Technologies Used
 HTML, CSS, JavaScript.
