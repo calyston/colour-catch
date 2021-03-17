@@ -32,9 +32,13 @@ function generateHex() {
 }
 
 function randomColours() {
+  //Initial Colours
+  initialColours = [];
   colourDivs.forEach((div, index) => {
     const hexText = div.children[0];
     const randomColour = generateHex();
+    //Add initial colour to the array
+    initialColours.push(randomColour);
 
     //Adding the colour to the background
     div.style.backgroundColor = randomColour;
@@ -83,14 +87,12 @@ function hslControls(e) {
     e.target.getAttribute("data-bright") ||
     e.target.getAttribute("data-sat"));
 
-  console.log(index);
-
   let sliders = e.target.parentElement.querySelectorAll('input[type = "range"]');
   const hue = sliders[0];
   const brightness = sliders[1];
   const saturation = sliders[2];
 
-  const bgColour = colourDivs[index].querySelector("h2").innerText;
+  const bgColour = initialColours[index];
 
   let colour = chroma(bgColour)
     .set('hsl.h', hue.value)
