@@ -23,7 +23,7 @@ path, i, svg {
 }
 
 .colour {
-  height: 80vh;
+  height: 100vh;
   display: flex;
   flex: 1;
   flex-direction: column;
