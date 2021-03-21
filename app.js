@@ -18,6 +18,12 @@ colourDivs.forEach((div, index) => {
   });
 });
 
+currentHexes.forEach(hex => {
+  hex.addEventListener('click', () => {
+    copyToClipboard(hex);
+  })
+})
+
 //Functions
 
 //Hex Generator

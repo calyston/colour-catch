@@ -144,6 +144,13 @@ input[type="range"] {
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.copy-container.active {
+  opacity: 1;
+  pointer-events: all;
 }
 
 .copy-popup {
@@ -161,4 +168,8 @@ input[type="range"] {
 
 .copy-popup h3, h4 {
   font-size: 1.5rem;
+}
+
+.copy-popup.active {
+  transform: translateY(0rem);
 }
