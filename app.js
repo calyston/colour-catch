@@ -4,7 +4,7 @@ const colourDivs = document.querySelectorAll('.colour');
 const refreshBtn = document.querySelector('.refresh');
 const sliders = document.querySelectorAll('input[type="range"]');
 const currentHexes = document.querySelectorAll('.colour h2');
-const copyPopup = document.querySelector('.copy-container');
+const popup = document.querySelector('.copy-container');
 let initialColours;
 
 //Event Listeners
@@ -24,6 +24,13 @@ currentHexes.forEach(hex => {
     copyToClipboard(hex);
   })
 })
+
+//Removing the Pop up
+popup.addEventListener('click', () => {
+  const popupBox = popup.children[0];
+  popup.classList.remove('active');
+  popupBox.classList.remove('active');
+});
 
 //Functions
 
@@ -155,9 +162,9 @@ function copyToClipboard(hex) {
   document.execCommand('copy');
   document.body.removeChild(element);
   //Pop up Animation
-  const copyPopupBox = copyPopup.children[0];
-  copyPopup.classList.add('active');
-  copyPopupBox.classList.add('active');
+  const popupBox = popup.children[0];
+  popup.classList.add('active');
+  popupBox.classList.add('active');
 }
 
 randomColours();
