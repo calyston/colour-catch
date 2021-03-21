@@ -4,6 +4,7 @@ const colourDivs = document.querySelectorAll('.colour');
 const refreshBtn = document.querySelector('.refresh');
 const sliders = document.querySelectorAll('input[type="range"]');
 const currentHexes = document.querySelectorAll('.colour h2');
+const copyPopup = document.querySelector('.copy-container');
 let initialColours;
 
 //Event Listeners
@@ -153,6 +154,10 @@ function copyToClipboard(hex) {
   element.select();
   document.execCommand('copy');
   document.body.removeChild(element);
+  //Pop up Animation
+  const copyPopupBox = copyPopup.children[0];
+  copyPopup.classList.add('active');
+  copyPopupBox.classList.add('active');
 }
 
 randomColours();
