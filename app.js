@@ -56,6 +56,8 @@ function randomColours() {
 
     colouriseSliders(colour, hue, brightness, saturation);
   });
+  //Reset Input Sliders
+  resetInputs();
 }
 
 function checkTextContrast(color, text) {
@@ -113,6 +115,27 @@ function updateTextUI(index) {
   for (icon of icons) {
     checkTextContrast(colour, icon);
   }
+}
+
+function resetInputs() {
+  const sliders = document.querySelectorAll('.sliders input');
+  sliders.forEach(slider => {
+    if (slider.name === 'hue') {
+      const hueColour = initialColours[slider.getAttribute('data-hue')];
+      const hueValue = chroma(hueColour).hsl()[0];
+      slider.value = Math.floor(hueValue);
+    }
+    if (slider.name === 'saturation') {
+      const satColour = initialColours[slider.getAttribute('data-sat')];
+      const satValue = chroma(satColour).hsl()[1];
+      slider.value = Math.floor(satValue * 100) / 100;
+    }
+    if (slider.name === 'brightness') {
+      const brightColour = initialColours[slider.getAttribute('data-bright')];
+      const brightValue = chroma(brightColour).hsl()[2];
+      slider.value = Math.floor(brightValue * 100) / 100;
+    }
+  })
 }
 
 randomColours();
