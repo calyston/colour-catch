@@ -42,6 +42,13 @@ adjustBtn.forEach((button, index) => {
   });
 });
 
+//Close Adjustment Panel
+closeAdjustments.forEach((button, index) => {
+  button.addEventListener('click', () => {
+    closeAdjustmentPanel(index);
+  });
+});
+
 //Functions
 
 //Hex Generator
@@ -179,6 +186,10 @@ function copyToClipboard(hex) {
 
 function openAdjustmentPanel(index) {
   sliderContainers[index].classList.toggle('active');
+}
+
+function closeAdjustmentPanel(index) {
+  sliderContainers[index].classList.remove('active');
 }
 
 randomColours();
