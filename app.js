@@ -4,6 +4,7 @@ const colourDivs = document.querySelectorAll('.colour');
 const refreshBtn = document.querySelector('.refresh');
 const sliders = document.querySelectorAll('input[type="range"]');
 const adjustBtn = document.querySelectorAll('.adjust');
+const lockBtn = document.querySelectorAll('.lock');
 const closeAdjustments = document.querySelectorAll('.close-adjustment');
 const sliderContainers = document.querySelectorAll('.sliders');
 const currentHexes = document.querySelectorAll('.colour h2');
@@ -89,6 +90,12 @@ function randomColours() {
   });
   //Reset Input Sliders
   resetInputs();
+
+  //Check for icon contrast
+  adjustBtn.forEach((button, index) => {
+    checkTextContrast(initialColours[index], button);
+    checkTextContrast(initialColours[index], lockBtn[index]);
+  });
 }
 
 function checkTextContrast(color, text) {
