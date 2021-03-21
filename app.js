@@ -13,6 +13,8 @@ let initialColours;
 
 //Event Listeners
 
+refreshBtn.addEventListener('click', randomColours);
+
 sliders.forEach(slider => {
   slider.addEventListener('input', hslControls);
 });
