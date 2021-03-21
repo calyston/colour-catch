@@ -146,4 +146,13 @@ function resetInputs() {
   })
 }
 
+function copyToClipboard(hex) {
+  const element = document.createElement('textarea');
+  element.value = hex.innerText;
+  document.body.appendChild(element);
+  element.select();
+  document.execCommand('copy');
+  document.body.removeChild(element);
+}
+
 randomColours();
