@@ -52,6 +52,13 @@ closeAdjustments.forEach((button, index) => {
   });
 });
 
+//Lock Button
+lockBtn.forEach((button, index) => {
+  button.addEventListener('click', () => {
+    addLockClass(button, index);
+  });
+});
+
 //Functions
 
 //Hex Generator
@@ -65,6 +72,12 @@ function generateHex() {
   return hexColour;
 }
 
+function addLockClass(button, index) {
+  colourDivs[index].classList.toggle('locked');
+  lockBtn[index].firstChild.classList.toggle('fa-lock-open');
+  lockBtn[index].firstChild.classList.toggle('fa-lock');
+}
+
 function randomColours() {
   //Initial Colours
   initialColours = [];
@@ -72,7 +85,12 @@ function randomColours() {
     const hexText = div.children[0];
     const randomColour = generateHex();
     //Add initial colour to the array
-    initialColours.push(randomColour);
+    if (div.classList.contains('locked')) {
+      initialColours.push(hexText.innerText);
+      return;
+    } else {
+      initialColours.push(randomColour);
+    }
 
     //Adding the colour to the background
     div.style.backgroundColor = randomColour;
