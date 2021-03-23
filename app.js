@@ -11,6 +11,9 @@ const currentHexes = document.querySelectorAll('.colour h2');
 const popup = document.querySelector('.copy-container');
 let initialColours;
 
+//Local Storage
+let savedPalettes = [];
+
 //Event Listeners
 
 refreshBtn.addEventListener('click', randomColours);
@@ -217,6 +220,22 @@ function openAdjustmentPanel(index) {
 
 function closeAdjustmentPanel(index) {
   sliderContainers[index].classList.remove('active');
+}
+
+//Save Palette & Local Storage
+const saveBtn = document.querySelector('.save');
+const submitSave = document.querySelector('.submit-save');
+const closeSave = document.querySelector('.close-save');
+const saveContainer = document.querySelector('.save-container');
+const saveInput = document.querySelector('.save-name');
+
+//Event Listeners
+saveBtn.addEventListener('click', openPalette);
+
+function openPalette(e) {
+  const popup = saveContainer.children[0];
+  saveContainer.classList.add('active');
+  popup.classList.add('active');
 }
 
 randomColours();
