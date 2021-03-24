@@ -285,6 +285,18 @@ function savePalette(e) {
   paletteBtn.classList.add(paletteObject.nr);
   paletteBtn.innerText = 'Select';
 
+  //Event Listener
+  paletteBtn.addEventListener('click', e => {
+    closeLibrary();
+    const paletteIndex = e.target.classList[1];
+    initialColours = [];
+    savedPalettes[paletteIndex].colours.forEach((colour, index) => {
+      initialColours.push(colour);
+      colourDivs[index].style.backgroundColor = colour;
+      const text = colourDivs[index].children[0];
+    })
+  })
+
   //Append to Library
   palette.appendChild(title);
   palette.appendChild(preview);
