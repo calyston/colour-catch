@@ -228,10 +228,16 @@ const submitSave = document.querySelector('.submit-save');
 const closeSave = document.querySelector('.close-save');
 const saveContainer = document.querySelector('.save-container');
 const saveInput = document.querySelector('.save-name');
+const libraryContainer = document.querySelector('.library-container');
+const libraryBtn = document.querySelector('.library');
+const closeLibraryBtn = document.querySelector('.close-library');
 
 //Event Listeners
 saveBtn.addEventListener('click', openPalette);
 closeSave.addEventListener('click', closePalette);
+submitSave.addEventListener('click', savePalette);
+libraryBtn.addEventListener('click', openLibrary);
+closeLibraryBtn.addEventListener('click', closeLibrary);
 
 function openPalette(e) {
   const popup = saveContainer.children[0];
@@ -244,5 +250,70 @@ function closePalette(e) {
   saveContainer.classList.remove('active');
   popup.classList.remove('active');
 }
+
+function savePalette(e) {
+  saveContainer.classList.remove('active');
+  popup.classList.remove('active');
+  const name = saveInput.value;
+  const colours = [];
+  currentHexes.forEach(hex => {
+    colours.push(hex.innerText);
+  });
+
+  //Generate Object
+  let paletteNr = savedPalettes.length;
+  const paletteObject = { name, colours, nr: paletteNr };
+  savedPalettes.push(paletteObject);
+  //Save to Local Storage
+  savetoLocal(paletteObject);
+  saveInput.value = '';
+  //Generate the palette for the library
+  const palette = document.createElement('div');
+  palette.classList.add('custom-palette');
+  const title = document.createElement('h4');
+  title.innerText = paletteObject.name;
+  const preview = document.createElement('div');
+  preview.classList.add('small-preview');
+  paletteObject.colours.forEach(smallColour => {
+    const smallDiv = document.createElement('div');
+    smallDiv.style.backgroundColor = smallColour;
+    preview.appendChild(smallDiv);
+  });
+
+  const paletteBtn = document.createElement('button');
+  paletteBtn.classList.add('pick-palette-buttotn');
+  paletteBtn.classList.add(paletteObject.nr);
+  paletteBtn.innerText = 'Select';
+
+  //Append to Library
+  palette.appendChild(title);
+  palette.appendChild(preview);
+  palette.appendChild(paletteBtn);
+  libraryContainer.children[0].appendChild(palette);
+}
+
+function savetoLocal(paletteObject) {
+  let localPalettes;
+  if (localStorage.getItem('palettes') === null) {
+    localPalettes = [];
+  } else {
+    localPalettes = JSON.parse(localStorage.getItem('palettes'));
+  }
+  localPalettes.push(paletteObject);
+  localStorage.setItem('palettes', JSON.stringify(localPalettes));
+}
+
+function openLibrary() {
+  const popup = libraryContainer.children[0];
+  libraryContainer.classList.add('active');
+  popup.classList.add('active');
+}
+
+function closeLibrary() {
+  const popup = libraryContainer.children[0];
+  libraryContainer.classList.remove('active');
+  popup.classList.remove('active');
+}
+
 
 randomColours();
