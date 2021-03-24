@@ -294,7 +294,10 @@ function savePalette(e) {
       initialColours.push(colour);
       colourDivs[index].style.backgroundColor = colour;
       const text = colourDivs[index].children[0];
-    })
+      checkTextContrast(colour, text);
+      updateTextUI(index);
+    });
+    resetInputs();
   })
 
   //Append to Library
@@ -327,5 +330,52 @@ function closeLibrary() {
   popup.classList.remove('active');
 }
 
+function getLocal() {
+  if (localStorage.getItem('palettes') === null) {
+    localStorage = [];
+  } else {
+    const paletteObjects = JSON.parse(localStorage.getItem('palettes'));
+    paletteObjects.forEach(paletteObject => {
+      //Generate the palette for the library
+      const palette = document.createElement('div');
+      palette.classList.add('custom-palette');
+      const title = document.createElement('h4');
+      title.innerText = paletteObject.name;
+      const preview = document.createElement('div');
+      preview.classList.add('small-preview');
+      paletteObject.colours.forEach(smallColour => {
+        const smallDiv = document.createElement('div');
+        smallDiv.style.backgroundColor = smallColour;
+        preview.appendChild(smallDiv);
+      });
 
+      const paletteBtn = document.createElement('button');
+      paletteBtn.classList.add('pick-palette-button');
+      paletteBtn.classList.add(paletteObject.nr);
+      paletteBtn.innerText = 'Select';
+
+      //Event Listener
+      paletteBtn.addEventListener('click', e => {
+        closeLibrary();
+        const paletteIndex = e.target.classList[1];
+        initialColours = [];
+        savedPalettes[paletteIndex].colours.forEach((colour, index) => {
+          initialColours.push(colour);
+          colourDivs[index].style.backgroundColor = colour;
+          const text = colourDivs[index].children[0];
+          checkTextContrast(colour, text);
+          updateTextUI(index);
+        });
+        resetInputs();
+      });
+      //Append to Library
+      palette.appendChild(title);
+      palette.appendChild(preview);
+      palette.appendChild(paletteBtn);
+      libraryContainer.children[0].appendChild(palette);
+    });
+  }
+}
+
+getLocal();
 randomColours();
