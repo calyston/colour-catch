@@ -281,7 +281,7 @@ function savePalette(e) {
   });
 
   const paletteBtn = document.createElement('button');
-  paletteBtn.classList.add('pick-palette-buttotn');
+  paletteBtn.classList.add('pick-palette-button');
   paletteBtn.classList.add(paletteObject.nr);
   paletteBtn.innerText = 'Select';
 
